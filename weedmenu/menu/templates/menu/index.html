@@ -1,0 +1,314 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>420 Club Menu</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        background-color: black;
+        font-family: "Montserrat", sans-serif;
+        color: #00ff88;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .wrapper {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slide {
+        max-width: 1000px; /* max container width */
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+
+        display: flex;
+        gap: 40px; /* space between left and right */
+        text-align: left;
+        opacity: 0;
+        transition: opacity 1s;
+        position: absolute;
+      }
+
+      .slide.active {
+        opacity: 1;
+        position: relative; /* so only active is visible */
+      }
+
+      .left {
+        flex: 0 0 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .left img {
+        width: 100%;
+        max-width: 280px;
+        border-radius: 20px;
+        display: block;
+      }
+
+      .left p,
+      .slide p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.1rem;
+        color: #dddddd;
+        line-height: 1.5;
+        letter-spacing: 0.03em; /* subtle spacing between letters */
+        word-spacing: 0.3em; /* consistent with product word spacing */
+        max-width: 280px;
+        margin-top: 1rem;
+      }
+
+      .right {
+        flex: 1 1 65%;
+        max-width: 700px;
+        overflow-y: auto;
+      }
+
+      .right-with-image {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        flex: 1;
+      }
+
+      .right-content {
+        flex: 1;
+      }
+
+      .right-image img {
+        max-width: 220px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: white;
+        text-shadow: 0 0 5px #ccff00, 0 0 10px #ccff00, 0 0 20px #ccff00;
+      }
+
+      .section-header {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      .section-header h2 {
+        font-family: "Montserrat", sans-serif;
+        color: white;
+        font-size: 2rem;
+        letter-spacing: 0.1em;
+        margin: 0 0 0.3rem 0;
+      }
+
+      .underline {
+        width: 100%;
+        height: 1px;
+        background-color: #cccccc;
+      }
+
+      .logo-container {
+        position: fixed;
+        top: 20px;
+        right: 20px; /* change left to right */
+        z-index: 1000;
+      }
+
+      .logo-container img {
+        max-width: 120px; /* adjust size */
+        height: auto;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 3rem;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      /* Wrapper for two product sections (KM.0 and ATHENA) */
+      .products-columns {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      /* Each product section */
+      .product-column {
+        flex: 1 1 300px;
+      }
+
+      .product {
+        font-size: 1.2rem;
+        color: white;
+        word-spacing: 0.4em; /* space between words */
+        letter-spacing: 0.2em; /* space between letters */
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: normal;
+        line-height: 1.3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="logo-container">
+        <img src="{% static 'menu/images/logo.png' %}" alt="Logo" />
+      </div>
+
+      <!-- Flowers -->
+      <div class="slide active" id="flowers">
+        <div class="left">
+          <img src="{% static 'menu/images/weed2.jpg' %}" alt="Flowers" />
+          <p>OUR WIDE FLOWER SELECTION FROM ATHENA & KM.0 GROW</p>
+          <img
+            src="{% static 'menu/images/km0-clean-logo-black.png' %}"
+            alt="KM0 Logo"
+            style="
+              margin-top: 1.5rem;
+              max-width: 120px;
+              display: block;
+              padding-left: 60px;
+            "
+          />
+        </div>
+        <div class="right">
+          <h1>FLOWERS</h1>
+          <div class="products-columns">
+            <!-- KM0 Column -->
+            <div class="product-column">
+              <div class="section-header">
+                <h2>KM.0</h2>
+                <div class="underline"></div>
+              </div>
+
+              <div class="products-grid">
+                <div class="product">GG4 X COSMIC 22</div>
+                <div class="product">COSMIC 22</div>
+                <div class="product">ZORTZI</div>
+                <div class="product">BUBBLE SPRITZ</div>
+                <div class="product">ZIZI DESIGNER SHERBERT</div>
+                <div class="product">TROP CHERRY GAS</div>
+              </div>
+            </div>
+
+            <!-- Athena Column -->
+            <div class="product-column">
+              <div class="section-header">
+                <h2>ATHENA</h2>
+                <div class="underline"></div>
+              </div>
+
+              <div class="products-grid">
+                <div class="product">ATHENA GROW</div>
+                <div class="product">SOUR BLUCCI</div>
+                <div class="product">GRAPE GAS</div>
+                <div class="product">BLUE LOBSTER</div>
+                <div class="product">ZANGRIA FUNK</div>
+                <div class="product">RED RUNTZ</div>
+                <div class="product">LIVING SOIL</div>
+                <div class="product">KEY LIME GUAVA</div>
+                <div class="product">CHERRY 26</div>
+                <div class="product">WHITE RAINBOW</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rosins -->
+      <div class="slide" id="resins">
+        <div class="left">
+          <img src="{% static 'menu/images/resin.jpg' %}" alt="Resins" />
+          <p>ENJOY OUR COLLECTION OF HIGH-END ROSINS</p>
+        </div>
+
+        <div class="right-with-image">
+          <div class="right-content">
+            <h1>LIVE ROSINS</h1>
+            <div
+              class="products-grid"
+              style="max-width: 400px; grid-template-columns: 1fr"
+            >
+              <div class="product">GG4 X GAS BOB</div>
+              <div class="product">BUBBLE SPRITZ</div>
+              <div class="product">ROSIN PEN</div>
+            </div>
+          </div>
+
+          <div class="right-image">
+            <img src="{% static 'menu/images/rosin2.jpg' %}" alt="Rosin 2" />
+            <p>EXTRACTED FROM OUR KM.0 STRAINS</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Piattella -->
+      <div class="slide" id="piattella">
+        <div class="left">
+          <img
+            src="{% static 'menu/images/piatella_black.png' %}"
+            alt="Piatella"
+          />
+          <p>ONLY FOR A SELECTED FEW...</p>
+        </div>
+        <div class="right">
+          <h1>PIATTELLA</h1>
+          <div
+            class="products-grid"
+            style="max-width: 400px; grid-template-columns: 1fr"
+          >
+            <div class="product">ZETA 3</div>
+            <div class="product">GG4 X GAS BOB</div>
+            <div class="product">ZKITTLEZ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hash -->
+      <div class="slide" id="hash">
+        <div class="left">
+          <img src="{% static 'menu/images/hash.webp' %}" alt="Hash" />
+          <p>IMPORTED AND LOCAL HASH, PREMIUM QUALITY</p>
+        </div>
+        <div class="right">
+          <h1>HASH</h1>
+          <div
+            class="products-grid"
+            style="max-width: 400px; grid-template-columns: 1fr"
+          >
+            <div class="product">POLINATOR</div>
+            <div class="product">BISCOTTI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      let current = 0;
+
+      setInterval(() => {
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      }, 10000);
+    </script>
+  </body>
+</html>
